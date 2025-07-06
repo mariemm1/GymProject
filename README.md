@@ -59,7 +59,7 @@ Below is the use case diagram describing the main interactions:
 ## 🧩 Class Diagram
 
 Below is the class diagram illustrating the structure and relationships:
-~~~~
+
 ![Class Diagram](images/classDiagram.png)
 
 ---
