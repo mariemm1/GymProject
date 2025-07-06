@@ -52,7 +52,7 @@ This account can:
 
 Below is the use case diagram describing the main interactions:
 
-![Use Case Diagram](usecase.png)
+![Use Case Diagram](images/useCase.png)
 
 ---
 
@@ -60,7 +60,7 @@ Below is the use case diagram describing the main interactions:
 
 Below is the class diagram illustrating the structure and relationships:
 
-![Class Diagram](classdiagram.png)
+![Class Diagram](images/classDiagram.png)
 
 ---
 
