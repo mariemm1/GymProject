@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Subscriptions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">My Subscriptions</h1>
+
+    <!-- Button to add new subscription -->
+    <a href="/allAbonnement" class="btn btn-primary mb-3">Subscribe to a New Abonnement</a>
+
+    <!-- Table displaying the list of subscriptions -->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Abonnement</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Mode of Payment</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through all subscriptions -->
+        <tr th:each="subscription : ${subscriptions}">
+            <td th:text="${subscription.abonnement != null ? subscription.abonnement.packName : 'No Abonnement'}"></td>
+            <td th:text="${subscription.startDate != null ? subscription.startDate : 'N/A'}"></td>
+            <td th:text="${subscription.endDate != null ? subscription.endDate : 'N/A'}"></td>
+            <td th:text="${subscription.modePayment != null ? subscription.modePayment : 'N/A'}"></td>
+            <td>
+                <!-- View and Delete buttons -->
+                <a th:href="@{/{id}(id=${subscription.id})}" class="btn btn-info btn-sm">View</a>
+                <form th:action="@{/delete/{id}(id=${subscription.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Are you sure you want to delete this subscription?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

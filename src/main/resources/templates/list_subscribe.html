@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Subscriptions List</title>
+</head>
+<body>
+<h1>Subscriptions</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Abonnement</th>
+        <th>Client</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="subscription : ${subscriptions}">
+        <td th:text="${subscription.id}"></td>
+        <td th:text="${subscription.abonnement.name}"></td>
+        <td th:text="${subscription.client.name}"></td>
+        <td th:text="${subscription.startDate}"></td>
+        <td th:text="${subscription.endDate}"></td>
+        <td>
+            <a th:href="@{/editSubscribe/{id}(id=${subscription.id})}">Edit</a> |
+            <a th:href="@{/deleteSubscribe/{id}(id=${subscription.id})}"
+               onclick="return confirm('Are you sure you want to delete this subscription?');">
+                Delete
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<a th:href="@{/addSubscribe}">Add New Subscription</a>
+</body>
+</html>

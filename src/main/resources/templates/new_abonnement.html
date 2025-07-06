@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Ajout Abonnement</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h3>Ajout Abonnement</h3>
+    <div class="card">
+        <div class="card-body">
+            <form th:action="@{/saveAbonnement}" th:object="${abonnementForm}" method="post">
+                <div class="form-group">
+                    <label for="packName">Nom du Pack</label>
+                    <input type="text" th:field="*{packName}" class="form-control" id="packName" placeholder="Nom du Pack" />
+                </div>
+                <div class="form-group">
+                    <label for="durationInMonths">Durée (mois)</label>
+                    <input type="number" th:field="*{durationInMonths}" class="form-control" id="durationInMonths" placeholder="Durée" />
+                </div>
+
+                <!-- Cours Checkbox List -->
+                <div class="form-group">
+                    <label for="cours">Cours</label>
+                    <div th:each="cours : ${coursList}">
+                        <div class="form-check">
+                            <!-- Checkbox for each course -->
+                            <input type="checkbox" th:field="*{cours}" th:value="${cours.id}" class="form-check-input" th:id="'cours_' + ${cours.id}">
+                            <label class="form-check-label" th:for="'cours_' + ${cours.id}" th:text="${cours.name}"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

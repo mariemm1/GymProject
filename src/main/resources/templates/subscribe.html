@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Subscription Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">Subscription Details</h1>
+    <p><strong>Pack Name:</strong> <span th:text="${subscription.abonnement.packName}"></span></p>
+<!--
+    <p><strong>Client Name:</strong> <span th:text="${subscription.client.firstName} + ' ' + ${subscription.client.lastName}"></span></p>
+-->
+    <p><strong>Start Date:</strong> <span th:text="${subscription.startDate}"></span></p>
+    <p><strong>End Date:</strong> <span th:text="${subscription.endDate}"></span></p>
+    <p><strong>Payment Mode:</strong> <span th:text="${subscription.modePayment}"></span></p>
+    <a href="/my_subscriptions" class="btn btn-primary">Back to My Subscriptions</a>
+</div>
+</body>
+</html>

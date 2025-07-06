@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Liste des Clients</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <h1 class="my-4">Liste des Clients</h1>
+
+    <!-- Button to add a new client -->
+    <a href="/addClient" class="btn btn-primary mb-3">
+        <i class="fas fa-user-plus"></i> Ajouter Client
+    </a>
+
+    <!-- Table displaying clients -->
+    <div th:switch="${listClient}">
+        <h2 th:case="null">Aucun enregistrement trouvé !!</h2>
+        <div th:case="*">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Nom d'utilisateur</th>
+                    <th>Email</th>
+                    <th>Mot de passe</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through all clients -->
+                <tr th:each="client : ${listClient}">
+                    <td th:text="${client.first_name}"></td>
+                    <td th:text="${client.last_name}"></td>
+                    <td th:text="${client.username}"></td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.password}"></td>
+                    <td>
+                        <!-- Edit and Delete buttons -->
+                        <a th:href="@{/editClient/{id}(id=${client.id})}" class="btn btn-warning btn-sm">Modifier</a>
+                        <a th:href="@{/deleteClient/{id}(id=${client.id})}" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?')">Supprimer</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
