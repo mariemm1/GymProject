@@ -60,7 +60,7 @@ Below is the use case diagram describing the main interactions:
 
 Below is the class diagram illustrating the structure and relationships:
 ~~~~
-![Class Diagram](images/classDiagram.PNG)
+![Class Diagram](images/classDiagram.png)
 
 ---
 
